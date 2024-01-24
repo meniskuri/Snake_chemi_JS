@@ -243,7 +243,6 @@ function keyDown(e){
         NORTH = 0;
       }
     }
-
   }
 }
 

@@ -27,14 +27,14 @@ play.addEventListener('click', e =>
   // timer = setInterval(updateTimer, 1000);
   // updateTimer();
   // $('#playAgainButton').hide();
-  var count = 30;
+  var count = 50;
 
   function startGame()
   { // startGame დასაწყისი
 
-    moveTarget();
-    draw();
-    moveSquare();
+    moveTarget(); // რენდომად რომ დასვას ვაშლი
+    draw();       //
+    moveSquare(); // 
 
     point = 0;
     timer = 30;
@@ -46,7 +46,10 @@ play.addEventListener('click', e =>
       if (count === 0)
       {
         clearInterval(interval);
+
+        // მოგება როგორ ხდება? ))))
         document.getElementById('countdown').innerHTML='კიდევ სცადე ჩემო კარგო';
+
         canvas.style.display = 'none';
       }
       clearInterval ();
