@@ -34,7 +34,7 @@ play.addEventListener('click', e =>
 
     moveTarget(); // რენდომად რომ დასვას ვაშლი
     draw();       //
-    moveSquare(); // 
+    moveSquare(); //
 
     point = 0;
     timer = 30;
@@ -48,7 +48,7 @@ play.addEventListener('click', e =>
         clearInterval(interval);
 
         // მოგება როგორ ხდება? ))))
-        document.getElementById('countdown').innerHTML='კიდევ სცადე ჩემო კარგო';
+        document.getElementById('countdown').innerHTML='კიდევ სცადე ჩემო გიო';
 
         canvas.style.display = 'none';
       }
