@@ -23,4 +23,5 @@ for(let a = 0; a <= c.length; a++) {
   console.log("gios ragac gamosdis \n" + a)
 }
 
-let person = prompt("what is your name? ")
+
+console.log(typeof 4)
