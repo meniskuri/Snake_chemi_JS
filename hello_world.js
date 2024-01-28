@@ -18,6 +18,7 @@ console.log(c + a + "\n" + b)
 console.log(c.length)
 
 
+
 for(let a = 0; a <= c.length; a++) {
   console.log("gios ragac gamosdis \n" + a)
 }
