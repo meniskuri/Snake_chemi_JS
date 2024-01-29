@@ -24,4 +24,4 @@ for(let a = 0; a <= c.length; a++) {
 }
 
 
-console.log(typeof 4)
+console.log(typeof(4))
