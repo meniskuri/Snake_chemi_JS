@@ -1,4 +1,8 @@
 function calculate() {
+
+    // clear the inputs 
+    document.getElementById('text1').value = '';
+    document.getElementById('text2').value = '';
     
     // Get the values from the input boxes
     var text1 = document.getElementById('text1').value;
@@ -15,14 +19,17 @@ function calculate() {
         text2 = prompt("sheiyvane ricxvi text2: ")
     }
     
-    var text3 = parseInt(text1)
-    document.getElementById('result1 numbers').value = `var ${text3} is  ${typeof text3}`
-      
     // Perform the calculation (here, addition is used as an example)
     var result1 = text1 + text2;
-    var result2 = text1 - text2;
+    var result2 = parseInt(text1) + parseInt(text2)
 
     // Display the result in the output text box
+    document.getElementById('text1').value = text1
+    document.getElementById('text2').value = text2
+
     document.getElementById('result1').value = `var ${result1} is  ${typeof result1}`
+    document.getElementById('result1 numbers').value = `var ${result2} is  ${typeof result2}`
+      
+  
 }
 
