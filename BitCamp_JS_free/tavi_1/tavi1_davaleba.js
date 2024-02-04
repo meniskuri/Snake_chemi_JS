@@ -29,7 +29,8 @@ function calculate() {
 
     document.getElementById('result1').value = `var ${result1} is  ${typeof result1}`
     document.getElementById('result1 numbers').value = `var ${result2} is  ${typeof result2}`
-      
+    
+    // უნდა ჩავამატო მინუსი გამრავლება გაყოფა და ნაშთი და isNaN სადმე გამოვიყენო
   
 }
 
