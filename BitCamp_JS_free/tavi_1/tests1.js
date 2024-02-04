@@ -1,6 +1,6 @@
-var gio = "13";
-console.log(gio)
+var gio = "g";
+
 console.log(`var gio is ${typeof gio}`);
 
-var dante = Number(gio)
-console.log(dante)
+var text3 = parseInt(gio)
+console.log(text3)
