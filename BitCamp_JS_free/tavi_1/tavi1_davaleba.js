@@ -36,6 +36,7 @@ function clear_button(){
     document.getElementById('text2').value = ""
     document.getElementById('result1').value = ""
     document.getElementById('result1_numbers').value = ""
+    document.getElementById('result1_numbers_minus').value = ""
 
 
 }
