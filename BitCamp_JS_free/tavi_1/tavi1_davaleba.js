@@ -18,6 +18,7 @@ function calculate() {
     // Perform the calculation (here, addition is used as an example)
     var result1 = text1 + text2;
     var result2 = parseInt(text1) + parseInt(text2)
+    var result3 = parseInt(text1) - parseInt(text2)
 
     // Display the result in the output text box
     document.getElementById('text1').value = text1
@@ -25,7 +26,7 @@ function calculate() {
 
     document.getElementById('result1').value = `var ${result1} is  ${typeof result1}`
     document.getElementById('result1_numbers').value = `var ${result2} is  ${typeof result2}`
-    
+    document.getElementById('result1_numbers_minus').value = result3
     // უნდა ჩავამატო მინუსი გამრავლება გაყოფა და ნაშთი და isNaN სადმე გამოვიყენო
   
 }
