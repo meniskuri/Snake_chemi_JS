@@ -17,9 +17,11 @@ function calculate() {
     
     // Perform the calculation (here, addition is used as an example)
     var result1 = text1 + text2;
-    var result2 = parseInt(text1) + parseInt(text2)
-    var result3 = parseInt(text1) - parseInt(text2)
-    var result4 = parseInt(text1) / parseInt(text2)
+    var result2 = parseFloat(text1) + parseFloat(text2)
+    var result3 = parseFloat(text1) - parseFloat(text2)
+    var result4 = parseFloat(text1) / parseFloat(text2)
+    var result5 = parseFloat(text1) * parseFloat(text2)
+    var result6 = parseFloat(text1) % parseFloat(text2)
 
     // Display the result in the output text box
     document.getElementById('text1').value = text1
@@ -29,6 +31,8 @@ function calculate() {
     document.getElementById('result1_numbers').value = `var ${result2} is  ${typeof result2}`
     document.getElementById('result1_numbers_minus').value = `var ${result3} is  ${typeof result3}`
     document.getElementById('result1_numbers_gayofa').value = result4
+    document.getElementById('result1_numbers_gamravleba').value = result5
+    document.getElementById('result1_numbers_nashti').value = result6
     // უნდა ჩავამატო მინუსი გამრავლება გაყოფა და ნაშთი და isNaN სადმე გამოვიყენო
   
 }
@@ -39,7 +43,9 @@ function clear_button(){
     document.getElementById('result1').value = ""
     document.getElementById('result1_numbers').value = ""
     document.getElementById('result1_numbers_minus').value = ""
-
+    document.getElementById('result1_numbers_gayofa').value = "" 
+    document.getElementById('result1_numbers_gamravleba').value = ""
+    document.getElementById('result1_numbers_nashti').value = ""
 
 }
 

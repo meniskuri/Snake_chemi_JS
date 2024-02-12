@@ -1,21 +1,21 @@
-function example() {
-    if (true) {
-        var x = 10; // function-scoped with hoisting
-        var y = 20; // block-scoped
-    }
+const readline = require('readline');
 
-    console.log(x); // 10
-    console.log(y); // ReferenceError: y is not defined
-}
+// Define a global variable to store the user's input
+let userInput = '';
 
-example()
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
 
-const x = 5
-console.log(`x = ${x}`)
+rl.question('Enter something: ', (input) => {
+  // Store the user's input in the global variable
+  userInput = input;
 
-if (x < 10){
-    console.log("1")
-} 
-if (x < 10) {
-    console.log("2")
-}
+  // Log the user's input and the global variable value
+  console.log(`You entered: ${input}`);
+  console.log(`Stored userInput: ${userInput}`);
+  
+  // Close the readline interface
+  rl.close();
+});
