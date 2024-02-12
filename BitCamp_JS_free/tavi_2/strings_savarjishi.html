@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Giorgi Kapanadze">
+    <meta name="description" content="Simple calculator in HTML.">
+    <title>My First Calculator Web Page</title>
+    <link rel="icon" href="html5.png" type="image/x-icon">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 50vh;
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <hr>
+    <h1> <em> შეიყვანეთ text 1 და text 2 ან დააჭირეთ
+            calculation და დინამიურად შეავსეთ ფანჯრები </em></h1>
+    <hr>
+
+    <label for="text1">text1:</label>
+    <input type="text" id="text1">
+
+    <label for="text2">text2:</label>
+    <input type="text" id="text2">
+
+
+    <button onclick="calculate()">Calculate</button>
+    <button onclick="clear_button()">Clear button</button>
+
+    <label for="result1">Result 1 (+) for text:</label>
+    <input type="text" id="result1" readonly>
+
+    <label for="result1">Result 1 (+) for numbers:</label>
+    <input id="result1_numbers" readonly>
+
+    <label for="result1">Result 1 (-) for numbers:</label>
+    <input id="result1_numbers_minus" readonly>
+
+    <label for="result1">Result 1 (/) for numbers:</label>
+    <input id="result1_numbers_gayofa" readonly>
+
+    <label for="result1">Result 1 (*) for numbers:</label>
+    <input id="result1_numbers_gamravleba" readonly>
+
+    <label for="result1">Result 1 (%) for numbers:</label>
+    <input id="result1_numbers_nashti" readonly>
+
+
+
+
+
+
+    <label for="result1">Result console:</label>
+    <input id="result_console" readonly>
+
+    <script src="tavi1_davaleba.js"></script>
+
+</body>
+
+</html>
