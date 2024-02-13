@@ -1,21 +1,30 @@
 const readline = require('readline');
 
-// Define a global variable to store the user's input
-let userInput = '';
-
 const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout
 });
 
-rl.question('Enter something: ', (input) => {
-  // Store the user's input in the global variable
-  userInput = input;
+function davaleba2 () {
+  console.log("tavidan dawyebashi var")
 
-  // Log the user's input and the global variable value
-  console.log(`You entered: ${input}`);
-  console.log(`Stored userInput: ${userInput}`);
-  
-  // Close the readline interface
-  rl.close();
-});
+  rl.question('Enter something: ', (sheyvana) => {  
+    // Log the user's input and the global variable value
+    console.log(`You entered: ${sheyvana}`);
+    console.log(`sheyvana aris ${typeof sheyvana}`)  
+    sheyvana = parseFloat(sheyvana)
+    console.log(`sheyvana aris ${typeof sheyvana}`)
+    console.log(`You entered: ${sheyvana}`);
+
+    if (isNaN(sheyvana) === true) {
+      console.log("sheyvanet ricxvi")
+      davaleba2()
+    } else {
+      console.log("aq var da unda shevamowmo sheyvanili ricxvi")
+      rl.close();
+    }
+    
+  }); 
+}
+
+davaleba2();
