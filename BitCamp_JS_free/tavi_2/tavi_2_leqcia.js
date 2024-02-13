@@ -6,24 +6,40 @@ const rl = readline.createInterface({
 });
 
 function davaleba2 () {
-  console.log("tavidan dawyebashi var")
-
+  
   rl.question('Enter something: ', (sheyvana) => {  
     // Log the user's input and the global variable value
     console.log(`You entered: ${sheyvana}`);
-    console.log(`sheyvana aris ${typeof sheyvana}`)  
-    sheyvana = parseFloat(sheyvana)
-    console.log(`sheyvana aris ${typeof sheyvana}`)
-    console.log(`You entered: ${sheyvana}`);
+    
+    let shemowmebeliStriqoni = `gio`
+    let gasayofiRcixvi = 7
+    
+    console.log(`shesamowmebeli striqonia: ${shemowmebeliStriqoni}`)
+    console.log(`shesamowmebeli ricxvia: ${gasayofiRcixvi}`) 
 
     if (isNaN(sheyvana) === true) {
-      console.log("sheyvanet ricxvi")
-      davaleba2()
+      console.log("sheyvaniia striqoni")
+      rl.close();
     } else {
-      console.log("aq var da unda shevamowmo sheyvanili ricxvi")
+      console.log("sheyvanilia ricxvi")
+      
+      // რიცხვი ლუწია თუ კენტი  
+      if (sheyvana % 2 === 0) {
+        console.log(`sheyvanili ricxvi: ${sheyvana} > luwia`)
+      } else {
+        console.log(`sheyvanili ricxvi: ${sheyvana} > kentia`)
+      }
+      // შეყვანილი რიცხვი უარყოფითია დადებითი თუ ნული
+      if (sheyvana === 0) {
+        console.log(`ricxvi 0 ia`)
+      } else if (sheyvana > 0) {
+        console.log(`ricxvi dadebitia`)
+      } else {
+        console.log(`ricxvi uaryofitia`)
+      }
+
       rl.close();
     }
-    
   }); 
 }
 
