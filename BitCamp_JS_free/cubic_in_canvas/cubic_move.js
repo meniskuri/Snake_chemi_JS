@@ -1,10 +1,18 @@
 const canvas = document.getElementById('canvas');
-const ctx = canvas.getContext('2d');
+const ctx    = canvas.getContext('2d');
 
 // Initial position of the cube
-let x = canvas.width / 2;
-let y = canvas.height / 2;
- const size = 20; // Size of the cube
+let x      = canvas.width / 2;
+let y      = canvas.height / 2;
+const size = 20; // Size of the cube
+const step = size;
+
+
+// rect movement with keyboard 
+let up    = false
+let down  = false
+let left  = false
+let right = false
 
 // Function to draw the cube
 function drawCube() {
@@ -13,27 +21,83 @@ function drawCube() {
     ctx.fillRect(x, y, size, size);
 }
 
-// Event listener for keyboard input
-document.addEventListener('keydown', (event) => {
-    const step = 5; // Step size for movement
+function startGame(){
 
-    switch (event.key) { // if else it gavaketo
-        case 'ArrowUp':
-            y -= step;
-            break;
-        case 'ArrowDown':
-            y += step;
-            break;
-        case 'ArrowLeft':
-            x -= step;
-            break;
-        case 'ArrowRight':
-            x += step;
-            break;
+    drawCube();
+    
+    // Event listener for keyboard input
+    document.addEventListener('keydown', (event) => {
+        // const step = size; // Step size for movement
+
+        if (event.key === 'ArrowUp'){
+            up = true
+            // y -= step;
         }
-        
-    drawCube(); // Redraw the cube after each key press
-});
+        else if (event.key === 'ArrowDown'){
+            down = true
+            // y   += step;
+        }
+        else if (event.key === 'ArrowLeft'){
+            left = true
+            // x   -= step;
+        }
+        else if (event.key === 'ArrowRight'){
+            right = true
+            // x    += step;
+        }
+       
+        console.log("////////////////////////")
+        console.log(`left `, left)
+        console.log(`right `, right)
+        console.log(`down `, down)
+        console.log(`up `, up)
+        console.log("////////////////////////")
+        moveSquare()
+    });
 
-// Initial draw
-drawCube();
+    document.addEventListener('keyup', event => {
+        if (event.key === 'ArrowUp')
+        {
+            up = false;
+        }
+        if (event.key === 'ArrowDown')
+        {
+            down = false;
+        }
+        if (event.key === 'ArrowRight')
+        {
+            right = false;
+        }
+        if (event.key === 'ArrowLeft')
+        {
+            left = false;
+        }
+        console.log('keyup', event.key);
+    });
+}
+
+startGame()
+
+function moveSquare()
+{
+  if (up)
+  {
+    y -= step;
+  }
+  if (down)
+  {
+    y += step;
+  }
+  if (left)
+  {
+    x -= step;
+  }
+  if (right)
+  {
+    x += step;
+  }
+
+  drawCube();
+
+}
+  

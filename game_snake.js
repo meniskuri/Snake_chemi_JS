@@ -78,7 +78,7 @@ play.addEventListener('click', e =>
       // moveSquare();
     });
 
-    // ეს რას აკეთებს? :))
+    // ეს რას აკეთებს? :)) gevige gevige ))) 
     document.addEventListener('keyup', e =>
     {
       if (e.key === 'ArrowUp')
