@@ -53,6 +53,7 @@ function startGame(){
         console.log(`up `, up)
         console.log("////////////////////////")
         moveSquare()
+        
     });
 
     document.addEventListener('keyup', event => {
@@ -74,9 +75,11 @@ function startGame(){
         }
         console.log('keyup', event.key);
     });
+    
 }
 
 startGame()
+
 
 function moveSquare()
 {
