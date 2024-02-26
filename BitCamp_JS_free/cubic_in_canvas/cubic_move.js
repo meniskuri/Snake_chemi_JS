@@ -7,6 +7,9 @@ let y      = canvas.height / 2;
 const size = 20; // Size of the cube
 const step = size;
 
+// Initial movement direction
+let dx = step;
+let dy = 0;
 
 // rect movement with keyboard 
 let up    = false
@@ -32,18 +35,26 @@ function startGame(){
         if (event.key === 'ArrowUp'){
             up = true
             // y -= step;
+            dx = 0;
+            dy = -step;
         }
         else if (event.key === 'ArrowDown'){
             down = true
             // y   += step;
+            dx = 0;
+            dy = step;
         }
         else if (event.key === 'ArrowLeft'){
             left = true
             // x   -= step;
+            dx = -step;
+            dy = 0;
         }
         else if (event.key === 'ArrowRight'){
             right = true
             // x    += step;
+            dx = step;
+            dy = 0;
         }
        
         console.log("////////////////////////")
@@ -52,7 +63,9 @@ function startGame(){
         console.log(`down `, down)
         console.log(`up `, up)
         console.log("////////////////////////")
-        moveSquare()
+        
+        //setInterval(moveSquare, 100);
+        //moveSquare()
         
     });
 
@@ -75,7 +88,8 @@ function startGame(){
         }
         console.log('keyup', event.key);
     });
-    
+
+    setInterval(moveSquare, 100);
 }
 
 startGame()
@@ -83,24 +97,38 @@ startGame()
 
 function moveSquare()
 {
-  if (up)
-  {
-    y -= step;
-  }
-  if (down)
-  {
-    y += step;
-  }
-  if (left)
-  {
-    x -= step;
-  }
-  if (right)
-  {
-    x += step;
-  }
+    x += dx;
+    y += dy;
 
-  drawCube();
+    // Wrap around the canvas
+    if (x >= canvas.width) {
+        x = 0;
+    } else if (x < 0) {
+        x = canvas.width - size;
+    }
+    if (y >= canvas.height) {
+        y = 0;
+    } else if (y < 0) {
+        y = canvas.height - size;
+    }
 
+    if (up)
+    {
+        y -= step;
+    }
+    if (down)
+    {
+        y += step;
+    }
+    if (left)
+    {
+        x -= step;
+    }
+    if (right)
+    {
+       x += step;
+    }
+    
+    drawCube();
 }
   
