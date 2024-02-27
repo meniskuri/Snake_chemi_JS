@@ -57,18 +57,12 @@ function startGame(){
             dy = 0;
         }
        
-        console.log("////////////////////////")
-        console.log(`left `, left)
-        console.log(`right `, right)
-        console.log(`down `, down)
-        console.log(`up `, up)
-        console.log("////////////////////////")
-        
         //setInterval(moveSquare, 100);
         //moveSquare()
         
     });
 
+    
     document.addEventListener('keyup', event => {
         if (event.key === 'ArrowUp')
         {
@@ -87,9 +81,16 @@ function startGame(){
             left = false;
         }
         console.log('keyup', event.key);
+        // console.log("////////////////////////")
+        // console.log(`left `, left)
+        // console.log(`right `, right)
+        // console.log(`down `, down)
+        // console.log(`up `, up)
+        // console.log("////////////////////////")
     });
-
+    
     setInterval(moveSquare, 100);
+    
 }
 
 startGame()
@@ -131,4 +132,5 @@ function moveSquare()
     
     drawCube();
 }
-  
+// სიჩქარე ემატება როცა კნოპკებს ვაჭერ. რა მიმართულებითაც მიდის თუ მაგ კნოპკას დავა
+// ჭერ. უნდა შევუზღუდო კოორდინატის მიმატება. უნდა ვნახო. მეზარება ეხლა
