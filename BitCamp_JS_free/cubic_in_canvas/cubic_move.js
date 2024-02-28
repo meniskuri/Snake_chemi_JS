@@ -2,8 +2,10 @@ const canvas = document.getElementById('canvas');
 const ctx    = canvas.getContext('2d');
 
 // Initial position of the cube
-let x      = canvas.width / 2;
-let y      = canvas.height / 2;
+let xHead      = canvas.width / 2;
+let yHead      = canvas.height / 2;
+let xApple     = 0
+let yApple     = 0 
 const size = 20; // Size of the cube
 const step = size;
 
@@ -24,7 +26,11 @@ var chartva = false
 function drawCube() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.fillStyle = 'blue';
-    ctx.fillRect(x, y, size, size);
+    ctx.fillRect(xHead, yHead, size, size);
+}
+
+function drawApple() {
+
 }
 
 function startGame(){
@@ -105,8 +111,8 @@ function moveSquare()
     }
 
     if (chartva === true){
-        x += dx;
-        y += dy;
+        xHead += dx;
+        yHead += dy;
     }
     
     if (up)
@@ -131,18 +137,24 @@ function moveSquare()
     }
 
     // Wrap around the canvas
-    if (x >= canvas.width) {
-        x = 0;
-    } else if (x < 0) {
-        x = canvas.width - size;
+    if (xHead >= canvas.width) {
+        xHead = 0;
+    } else if (xHead < 0) {
+        xHead = canvas.width - size;
     }
-    if (y >= canvas.height) {
-        y = 0;
-    } else if (y < 0) {
-        y = canvas.height - size;
+    if (yHead >= canvas.height) {
+        yHead = 0;
+    } else if (yHead < 0) {
+        yHead = canvas.height - size;
     }
     
     drawCube();
 }
 // სიჩქარე ემატება როცა კნოპკებს ვაჭერ. რა მიმართულებითაც მიდის თუ მაგ კნოპკას დავა
 // ჭერ. უნდა შევუზღუდო კოორდინატის მიმატება. უნდა ვნახო. მეზარება ეხლა
+// ვაშლები უნდა დავსვა
+// ვაშლის ჭამა უნდა გავაკეთო
+// კუდის მომატება უნდა გავაკეთო 
+// დავალება დავწერო მეორე მესამე ლექციის
+// მესამე ლექციას ვუყურო
+// ოუუ შით. მაგრამ უნდ ავქნა 
