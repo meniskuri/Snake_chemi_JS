@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Cube</title>
+    <style>
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas" width="400" height="400"></canvas>
+
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        const cubeSize = 50; // Size of the cube
+        const canvasWidth = canvas.width;
+        const canvasHeight = canvas.height;
+
+        function drawCube(x, y) {
+            ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+            ctx.fillStyle = 'blue';
+            ctx.fillRect(x, y, cubeSize, cubeSize);
+        }
+
+        function getRandomPosition() {
+            const x = Math.random() * (canvasWidth - cubeSize);
+            const y = Math.random() * (canvasHeight - cubeSize);
+            return { x, y };
+        }
+
+        function animate() {
+            const { x, y } = getRandomPosition();
+            drawCube(x, y);
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+    </script>
+</body>
+</html>

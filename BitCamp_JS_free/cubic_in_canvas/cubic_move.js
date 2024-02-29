@@ -22,21 +22,11 @@ let right = false
 // chartva 
 var chartva = false
 
-// Function to draw the cube
-function drawCube() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = 'blue';
-    ctx.fillRect(xHead, yHead, size, size);
-}
-
-function drawApple() {
-
-}
-
 function startGame(){
 
-    drawCube();
-    
+    drawCube()
+    // drawApple()
+
     // Event listener for keyboard input
     document.addEventListener('keydown', (event) => {
         const step = size; // Step size for movement
@@ -90,10 +80,41 @@ function startGame(){
     });
     
     setInterval(moveSquare, 100);
+    // drawApple()
+   
 }
 
 startGame()
 
+
+
+
+
+
+// Function to draw the cube
+function drawCube() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = 'blue';
+    ctx.fillRect(xHead, yHead, size, size);
+}
+
+function drawApple() {
+    //ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = 'red';
+    ctx.fillRect(xApple, yApple, size, size);
+
+}
+
+function getTargetRandomXY()
+{
+  const x = Math.floor(Math.random() * (canvas.width - targetSize));
+  const y = Math.floor(Math.random() * (canvas.height - targetSize));
+  
+  return {
+    x: x,
+    y: y,
+  }
+}
 
 function moveSquare()
 {
@@ -106,8 +127,8 @@ function moveSquare()
     
     if (left === true){
         chartva = true
-        console.log("aq var")
-        console.log(`chartva: ${chartva}`)
+        // console.log("aq var")
+        // console.log(`chartva: ${chartva}`)
     }
 
     if (chartva === true){
@@ -147,8 +168,32 @@ function moveSquare()
     } else if (yHead < 0) {
         yHead = canvas.height - size;
     }
+    ///////////////////////////////////////
+    // Generate a random integer between min (inclusive) and max (exclusive)
+    let randomNum = Math.random();
     
-    drawCube();
+    function getRandomInt(minimum, maximum) {
+        return Math.floor(Math.random() * (maximum - minimum)) + minimum;
+    }
+    
+    // Example usage:
+    let minimum = 7;
+    let maximum = 15;
+
+    let mtvleli = 0
+    
+    while (mtvleli < 10){
+        let randomNumber = getRandomInt(minimum, maximum);
+        // console.log(randomNumber); // Output will be a random number between 1 and 99
+        mtvleli++
+    }
+     
+    console.log(randomNumber);
+    //console.log(xApple)
+    xApple = 10
+
+    drawCube()
+    drawApple()
 }
 // სიჩქარე ემატება როცა კნოპკებს ვაჭერ. რა მიმართულებითაც მიდის თუ მაგ კნოპკას დავა
 // ჭერ. უნდა შევუზღუდო კოორდინატის მიმატება. უნდა ვნახო. მეზარება ეხლა
