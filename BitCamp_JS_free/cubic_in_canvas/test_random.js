@@ -1,5 +1,5 @@
 // Generate a random number between 0 and 1
-// let randomNum = Math.random();
+let randomNum = Math.random();
 
 // Generate a random integer between min (inclusive) and max (exclusive)
 function getRandomInt(minimum, maximum) {
@@ -10,11 +10,8 @@ function getRandomInt(minimum, maximum) {
 let minimum = 7;
 let maximum = 15;
 
-let mtvleli = 0
+randomNum = getRandomInt(minimum, maximum);
 
-while (mtvleli < 10){
-    let randomNumber = getRandomInt(minimum, maximum);
-    console.log(randomNumber); // Output will be a random number between 1 and 99
-    mtvleli++
-}
+console.log(randomNum)
+
 

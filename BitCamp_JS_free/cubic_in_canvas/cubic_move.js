@@ -2,10 +2,10 @@ const canvas = document.getElementById('canvas');
 const ctx    = canvas.getContext('2d');
 
 // Initial position of the cube
-let xHead      = canvas.width / 2;
-let yHead      = canvas.height / 2;
-let xApple     = 0
-let yApple     = 0 
+let xHead  = canvas.width / 2;
+let yHead  = canvas.height / 2;
+let xApple = 0
+let yApple = 0 
 const size = 20; // Size of the cube
 const step = size;
 
@@ -25,7 +25,6 @@ var chartva = false
 function startGame(){
 
     drawCube()
-    // drawApple()
 
     // Event listener for keyboard input
     document.addEventListener('keydown', (event) => {
@@ -33,30 +32,24 @@ function startGame(){
 
         if (event.key === 'ArrowUp'){
             up = true
-            // y -= step;
             dx = 0;
             dy = -step;
         }
         else if (event.key === 'ArrowDown'){
             down = true
-            // y   += step;
             dx = 0;
             dy = step;
        }
         else if (event.key === 'ArrowLeft'){
             left = true
-            // x   -= step;
             dx = -step;
             dy = 0;
         }
         else if (event.key === 'ArrowRight'){
             right = true
-            // x    += step;
             dx = step;
             dy = 0;
         }
-        //setInterval(moveSquare, 100);
-        //moveSquare()
     });
 
     document.addEventListener('keyup', event => {
@@ -80,8 +73,7 @@ function startGame(){
     });
     
     setInterval(moveSquare, 100);
-    // drawApple()
-   
+    getTargetRandomXY()
 }
 
 startGame()
@@ -105,11 +97,13 @@ function drawApple() {
 
 }
 
-function getTargetRandomXY()
+function getTargetRandomXY() // es mchirdeba?
 {
-  const x = Math.floor(Math.random() * (canvas.width - targetSize));
-  const y = Math.floor(Math.random() * (canvas.height - targetSize));
+  const x = Math.floor(Math.random() * (canvas.width - size));
+  const y = Math.floor(Math.random() * (canvas.height - size));
   
+  // console.log(`x = ${x}, y = ${y}`)
+
   return {
     x: x,
     y: y,
@@ -168,29 +162,12 @@ function moveSquare()
     } else if (yHead < 0) {
         yHead = canvas.height - size;
     }
-    ///////////////////////////////////////
-    // Generate a random integer between min (inclusive) and max (exclusive)
-    let randomNum = Math.random();
     
-    function getRandomInt(minimum, maximum) {
-        return Math.floor(Math.random() * (maximum - minimum)) + minimum;
-    }
-    
-    // Example usage:
-    let minimum = 7;
-    let maximum = 15;
-
-    let mtvleli = 0
-    
-    while (mtvleli < 10){
-        let randomNumber = getRandomInt(minimum, maximum);
-        // console.log(randomNumber); // Output will be a random number between 1 and 99
-        mtvleli++
-    }
-     
-    console.log(randomNumber);
-    //console.log(xApple)
-    xApple = 10
+    // გადასაკეთებელი იქნება ეს 
+    let { x, y } = getTargetRandomXY();
+    xApple = x
+    yApple = y
+    // console.log(xHead)
 
     drawCube()
     drawApple()
