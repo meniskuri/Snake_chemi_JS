@@ -156,6 +156,7 @@ function moveSquare()
   squareX = Math.max(0, squareX);
   squareY = Math.max(0, squareY);
 
+  console.log(isEaten())
   if(isEaten())
   {
     moveTarget();

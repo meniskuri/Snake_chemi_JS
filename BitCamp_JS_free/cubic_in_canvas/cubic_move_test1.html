@@ -1,44 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Random Cube</title>
-    <style>
-        canvas {
-            border: 1px solid black;
-        }
-    </style>
+    <title>Collision Detection</title>
 </head>
+
 <body>
     <canvas id="canvas" width="400" height="400"></canvas>
-
     <script>
         const canvas = document.getElementById('canvas');
         const ctx = canvas.getContext('2d');
-        const cubeSize = 50; // Size of the cube
-        const canvasWidth = canvas.width;
-        const canvasHeight = canvas.height;
 
-        function drawCube(x, y) {
-            ctx.clearRect(0, 0, canvasWidth, canvasHeight);
-            ctx.fillStyle = 'blue';
-            ctx.fillRect(x, y, cubeSize, cubeSize);
+        let cube1 = { x: 50, y: 50, size: 50, color: 'blue' };
+        let cube2 = { x: 200, y: 200, size: 50, color: 'red' };
+
+        function drawCube(cube) {
+            ctx.fillStyle = cube.color;
+            ctx.fillRect(cube.x, cube.y, cube.size, cube.size);
         }
 
-        function getRandomPosition() {
-            const x = Math.random() * (canvasWidth - cubeSize);
-            const y = Math.random() * (canvasHeight - cubeSize);
-            return { x, y };
+        function detectCollision(cube1, cube2) {
+            return cube1.x < cube2.x + cube2.size &&
+                cube1.x + cube1.size > cube2.x &&
+                cube1.y < cube2.y + cube2.size &&
+                cube1.y + cube1.size > cube2.y;
         }
 
-        function animate() {
-            const { x, y } = getRandomPosition();
-            drawCube(x, y);
-            requestAnimationFrame(animate);
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            drawCube(cube1);
+            drawCube(cube2);
+
+            if (detectCollision(cube1, cube2)) {
+                console.log('Collision detected!');
+                ctx.fillStyle = 'green';
+                ctx.fillRect(cube2.x, cube2.y, cube2.size, cube2.size);
+            }
         }
 
-        animate();
+        setInterval(draw, 1000 / 60); // Update the canvas approximately 60 times per second
     </script>
 </body>
+
 </html>

@@ -4,9 +4,9 @@ const ctx    = canvas.getContext('2d');
 // Initial position of the cube
 let xHead  = canvas.width / 2;
 let yHead  = canvas.height / 2;
-let xApple = 0
-let yApple = 0 
-const size = 20; // Size of the cube
+let xApple = 30
+let yApple = 30
+const size = 20; // Size of the cubes
 const step = size;
 
 // Initial movement direction
@@ -21,6 +21,10 @@ let right = false
 
 // chartva 
 var chartva = false
+
+// ფოინთ
+let point   = 0;
+var pointIs = document.getElementById('point');
 
 function startGame(){
 
@@ -37,18 +41,18 @@ function startGame(){
         }
         else if (event.key === 'ArrowDown'){
             down = true
-            dx = 0;
-            dy = step;
+            dx   = 0;
+            dy   = step;
        }
         else if (event.key === 'ArrowLeft'){
             left = true
-            dx = -step;
-            dy = 0;
+            dx   = -step;
+            dy   = 0;
         }
         else if (event.key === 'ArrowRight'){
             right = true
-            dx = step;
-            dy = 0;
+            dx    = step;
+            dy    = 0;
         }
     });
 
@@ -69,11 +73,14 @@ function startGame(){
         {
             left = false;
         }
-        console.log('keyup', event.key);
+        // console.log('keyup', event.key);
     });
     
+    let { x, y } = getTargetRandomXY();
+    xApple = x
+    yApple = y
+
     setInterval(moveSquare, 100);
-    getTargetRandomXY()
 }
 
 startGame()
@@ -101,7 +108,6 @@ function getTargetRandomXY() // es mchirdeba?
 {
   const x = Math.floor(Math.random() * (canvas.width - size));
   const y = Math.floor(Math.random() * (canvas.height - size));
-  
   // console.log(`x = ${x}, y = ${y}`)
 
   return {
@@ -109,6 +115,12 @@ function getTargetRandomXY() // es mchirdeba?
     y: y,
   }
 }
+
+function isEaten()
+{
+    return xHead < xApple + size && xHead + size > xApple && yHead < yApple + size && yHead + size > yApple
+}
+
 
 function moveSquare()
 {
@@ -119,10 +131,9 @@ function moveSquare()
     // console.log(`up `, up)
     // console.log("////////////////////////")
     
+    // lefts რომ დავაჭერ ირთვება კოდი
     if (left === true){
         chartva = true
-        // console.log("aq var")
-        // console.log(`chartva: ${chartva}`)
     }
 
     if (chartva === true){
@@ -163,20 +174,25 @@ function moveSquare()
         yHead = canvas.height - size;
     }
     
-    // გადასაკეთებელი იქნება ეს 
-    let { x, y } = getTargetRandomXY();
-    xApple = x
-    yApple = y
-    // console.log(xHead)
+    
+    if (isEaten()){
+        let { x, y } = getTargetRandomXY();
+        xApple = x
+        yApple = y
+        point++
+    }
 
+    // პოინთ (აქ ვარ გაჩერებული)
+    pointIs.innerHTML = point;
+    
+    
     drawCube()
     drawApple()
 }
-// სიჩქარე ემატება როცა კნოპკებს ვაჭერ. რა მიმართულებითაც მიდის თუ მაგ კნოპკას დავა
-// ჭერ. უნდა შევუზღუდო კოორდინატის მიმატება. უნდა ვნახო. მეზარება ეხლა
-// ვაშლები უნდა დავსვა
-// ვაშლის ჭამა უნდა გავაკეთო
-// კუდის მომატება უნდა გავაკეთო 
-// დავალება დავწერო მეორე მესამე ლექციის
-// მესამე ლექციას ვუყურო
-// ოუუ შით. მაგრამ უნდ ავქნა 
+
+// ვაშლი თავიდან რენდომზე ისმებოდეს
+// ვაშლი არ ისმებოდეს გველის პოზიციაზე
+// მასივია გასაკეთებელი სადაც გველის ტრეკი ჩაიწერება
+// რამდენი ვაშლიც არის ნაჭამი იმდენი კუბიკი დაიხატოს გველის ტრეკზე
+// თავის თავის ჭამის ალგორითმია გასაკეთებელი
+// < აქეთ რომ მიდის > აქეთ წამოსვლა ეგრევე არ შეეძლოს რომ თავი არ ჭამოს. ასევე ზევით და ქვევითაც
