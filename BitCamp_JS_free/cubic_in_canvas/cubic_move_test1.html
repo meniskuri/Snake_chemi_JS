@@ -4,7 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Collision Detection</title>
+    <title>Snake Game</title>
+    <style>
+        #canvas {
+            border: 1px solid black;
+        }
+    </style>
 </head>
 
 <body>
@@ -13,34 +18,80 @@
         const canvas = document.getElementById('canvas');
         const ctx = canvas.getContext('2d');
 
-        let cube1 = { x: 50, y: 50, size: 50, color: 'blue' };
-        let cube2 = { x: 200, y: 200, size: 50, color: 'red' };
+        // Initial position of the snake
+        let snake = [{ x: 10, y: 10 }];
+        const size = 20; // Size of each segment
+        const step = size; // Step size for movement
+        let dx = step;
+        let dy = 0;
 
-        function drawCube(cube) {
-            ctx.fillStyle = cube.color;
-            ctx.fillRect(cube.x, cube.y, cube.size, cube.size);
+        // Position of the apple
+        let apple = { x: 15, y: 15 };
+
+        // Function to draw a segment of the snake
+        function drawSegment(segment) {
+            ctx.fillStyle = 'blue';
+            ctx.fillRect(segment.x * size, segment.y * size, size, size);
         }
 
-        function detectCollision(cube1, cube2) {
-            return cube1.x < cube2.x + cube2.size &&
-                cube1.x + cube1.size > cube2.x &&
-                cube1.y < cube2.y + cube2.size &&
-                cube1.y + cube1.size > cube2.y;
+        // Function to draw the apple
+        function drawApple() {
+            ctx.fillStyle = 'red';
+            ctx.fillRect(apple.x * size, apple.y * size, size, size);
         }
 
-        function draw() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            drawCube(cube1);
-            drawCube(cube2);
+        // Function to draw the entire snake
+        function drawSnake() {
+            snake.forEach(segment => drawSegment(segment));
+        }
 
-            if (detectCollision(cube1, cube2)) {
-                console.log('Collision detected!');
-                ctx.fillStyle = 'green';
-                ctx.fillRect(cube2.x, cube2.y, cube2.size, cube2.size);
+        // Function to move the snake
+        function moveSnake() {
+            const head = { x: snake[0].x + dx, y: snake[0].y + dy };
+
+            // Check if the snake has eaten the apple
+            if (head.x === apple.x && head.y === apple.y) {
+                // Add a new segment to the snake's tail
+                snake.push({});
+                // Generate a new apple at a random position
+                apple.x = Math.floor(Math.random() * (canvas.width / size));
+                apple.y = Math.floor(Math.random() * (canvas.height / size));
+            } else {
+                // Remove the last segment of the snake's tail
+                snake.pop();
             }
+
+            // Move the snake's head
+            snake.unshift(head);
+
+            // Clear the canvas
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Draw the snake and the apple
+            drawSnake();
+            drawApple();
         }
 
-        setInterval(draw, 1000 / 60); // Update the canvas approximately 60 times per second
+        // Event listener for keyboard input
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'ArrowUp' && dy === 0) {
+                dx = 0;
+                dy = -step;
+            } else if (event.key === 'ArrowDown' && dy === 0) {
+                dx = 0;
+                dy = step;
+            } else if (event.key === 'ArrowLeft' && dx === 0) {
+                dx = -step;
+                dy = 0;
+            } else if (event.key === 'ArrowRight' && dx === 0) {
+                dx = step;
+                dy = 0;
+            }
+        });
+
+        // Start the game loop
+        setInterval(moveSnake, 100);
+
     </script>
 </body>
 

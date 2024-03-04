@@ -26,6 +26,12 @@ var chartva = false
 let point   = 0;
 var pointIs = document.getElementById('point');
 
+// Array to store the snake's tail segments
+let tail = [];
+
+// counter bijebi
+counter_bijebi = 0
+
 function startGame(){
 
     drawCube()
@@ -80,7 +86,7 @@ function startGame(){
     xApple = x
     yApple = y
 
-    setInterval(moveSquare, 100);
+    setInterval(moveSquare, 200);
 }
 
 startGame()
@@ -139,6 +145,9 @@ function moveSquare()
     if (chartva === true){
         xHead += dx;
         yHead += dy;
+        
+        // counter bijebi - ramden bijs aketebs gveli 
+        counter_bijebi++
     }
     
     if (up)
@@ -188,6 +197,12 @@ function moveSquare()
     
     drawCube()
     drawApple()
+    // console.log(`xhead = ${xHead}, yHead = ${yHead}`)
+    // console.log(counter_bijebi)
+    tail[counter_bijebi] = { x: xHead, y: yHead };
+    
+    // console.log(tail[counter_bijebi])
+    // console.log(tail.length)
 }
 
 // ვაშლი თავიდან რენდომზე ისმებოდეს
@@ -196,3 +211,11 @@ function moveSquare()
 // რამდენი ვაშლიც არის ნაჭამი იმდენი კუბიკი დაიხატოს გველის ტრეკზე
 // თავის თავის ჭამის ალგორითმია გასაკეთებელი
 // < აქეთ რომ მიდის > აქეთ წამოსვლა ეგრევე არ შეეძლოს რომ თავი არ ჭამოს. ასევე ზევით და ქვევითაც
+
+// tail უნდა გავაკეთო
+// ყველა ბიჯი იწერებოდეს tail ში 
+// ბოლოდან დაიწყოს ხატვა (იმდენის რამდენი ვაშლიც აქვს ნაჭამი)
+// მასივის გადატვირთვისგან დაცვაა საჭირო
+
+
+// რაღაც ვერ ვაკეთებ ვერაფერს ბლიაძძძ 
