@@ -60,6 +60,7 @@ function startGame(){
             dx    = step;
             dy    = 0;
         }
+        moveSquare()
     });
 
     document.addEventListener('keyup', event => {
@@ -86,9 +87,11 @@ function startGame(){
     xApple = x
     yApple = y
 
-    setInterval(moveSquare, 200);
+    // setInterval(moveSquare, 200);
+    
 }
 
+// ნებისმიერ რამეს რომ ვაჭერ ეს ირთვება. რატო?
 startGame()
 
 
@@ -142,33 +145,33 @@ function moveSquare()
         chartva = true
     }
 
-    if (chartva === true){
-        xHead += dx;
-        yHead += dy;
-        
-        // counter bijebi - ramden bijs aketebs gveli 
-        counter_bijebi++
-    }
+    //if (chartva === true){
+    //    xHead += dx;
+    //    yHead += dy;
+    //    
+    //    // counter bijebi - ramden bijs aketebs gveli 
+    //    counter_bijebi++
+    //}
     
     if (up)
     {
-        // y -= step;
-        // y += dy;
+        // yHead -= step;
+        yHead += dy;
     }
     if (down)
     {
-        // y += step;
-        // y += dy;
+        // yHead += step;
+        yHead += dy;
     }
     if (left)
     {
-        // x -= step;
-        // x += dx;
+        // xHead -= step;
+        xHead += dx;
     }
     if (right)
     {
-       // x += step;
-       // x += dx;
+       // xHead += step;
+       xHead += dx;
     }
 
     // Wrap around the canvas
@@ -195,14 +198,20 @@ function moveSquare()
     pointIs.innerHTML = point;
     
     
+    // tail testing!!!!!!!!! mishveleTTTt ))) arada martivia bliadd
+    tail[counter_bijebi] = { x: xHead, y: yHead };
+    counter_bijebi++
+    
+
+    for (let i = tail.length; i >= 0; i--){
+        console.log(`i = ${i}`)
+        console.log(`tail length = ${tail.length}`)
+        console.log(`tail[i] = ${tail[i]}`)
+        console.log(tail[i])
+    }
+
     drawCube()
     drawApple()
-    // console.log(`xhead = ${xHead}, yHead = ${yHead}`)
-    // console.log(counter_bijebi)
-    tail[counter_bijebi] = { x: xHead, y: yHead };
-    
-    // console.log(tail[counter_bijebi])
-    // console.log(tail.length)
 }
 
 // ვაშლი თავიდან რენდომზე ისმებოდეს
