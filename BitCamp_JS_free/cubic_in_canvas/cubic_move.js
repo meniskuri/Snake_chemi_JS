@@ -103,7 +103,10 @@ startGame()
 function drawCube() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.fillStyle = 'blue';
-    ctx.fillRect(xHead, yHead, size, size);
+    // ctx.fillRect(xHead, yHead, size, size);
+    for (let i = 0; i < tail.length; i++) {
+        ctx.fillRect(tail[i].x, tail[i].y, size, size);
+    }
 }
 
 function drawApple() {
@@ -199,17 +202,29 @@ function moveSquare()
     
     
     // tail testing!!!!!!!!! mishveleTTTt ))) arada martivia bliadd
-    tail[counter_bijebi] = { x: xHead, y: yHead };
-    counter_bijebi++
+    tail[point] = { x: xHead, y: yHead };
+    // console.log(`counter_bijebi = ${counter_bijebi}`)
     
+    console.log(`/////////////////////`)
+    for (let i = tail.length-1; i >= 0; i--){
+        // tail[i] = { x: tail[i - 1].x, y: tail[i - 1].y };
+        if (i !== 0) {
+            console.log("aq var")
+            // tail[i-1] = tail[i]
+            tail[i] = { x: tail[i - 1].x, y: tail[i - 1].y };
+        }
 
-    for (let i = tail.length; i >= 0; i--){
+        if (tail.length > 0) {
+            tail[0] = { x: xHead, y: yHead };
+        }
+        
         console.log(`i = ${i}`)
         console.log(`tail length = ${tail.length}`)
-        console.log(`tail[i] = ${tail[i]}`)
         console.log(tail[i])
+        // console.log(`/////////////////////`)
     }
-
+    
+    counter_bijebi++
     drawCube()
     drawApple()
 }
