@@ -106,17 +106,35 @@ function drawApple()
     ctx.fillRect(xApple, yApple, size, size);
 }
 
+//function getTargetRandomXY() // es mchirdeba?
+//{
+//   const x = Math.floor(Math.random() * (canvas.width - size));
+//    const y = Math.floor(Math.random() * (canvas.height - size));
+//    // console.log(x = ${x}, y = ${y})
+//
+//    return {
+//    x: x,
+//    y: y
+//  }
+//}
+
+//////////////////////////////////////////
 function getTargetRandomXY() // es mchirdeba?
 {
-    const x = Math.floor(Math.random() * (canvas.width - size));
-    const y = Math.floor(Math.random() * (canvas.height - size));
-    // console.log(x = ${x}, y = ${y})
+    let x = (Math.random() * (canvas.width - size));
+    x = x - (x % size);
+
+    let y = (Math.random() * (canvas.height - size));
+    y = y - (y % size);
 
     return {
     x: x,
     y: y
   }
 }
+
+
+/////////////////////////////////////////
 function isEaten()
 {
     return tail[0].x < xApple + size && tail[0].x + size > xApple && tail[0].y < yApple + size && tail[0].y + size > yApple
