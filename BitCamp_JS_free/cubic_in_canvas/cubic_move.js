@@ -60,7 +60,7 @@ function startGame(){
             dx    = step;
             dy    = 0;
         }
-        moveSquare()
+        // moveSquare()
     });
 
     document.addEventListener('keyup', event => {
@@ -87,7 +87,7 @@ function startGame(){
     xApple = x
     yApple = y
 
-    // setInterval(moveSquare, 200);
+    setInterval(moveSquare, 200);
     
 }
 
@@ -148,33 +148,33 @@ function moveSquare()
         chartva = true
     }
 
-    //if (chartva === true){
-    //    xHead += dx;
-    //    yHead += dy;
-    //    
-    //    // counter bijebi - ramden bijs aketebs gveli 
-    //    counter_bijebi++
-    //}
+    if (chartva === true){
+        xHead += dx;
+        yHead += dy;
+        
+        // counter bijebi - ramden bijs aketebs gveli 
+        counter_bijebi++
+    }
     
     if (up)
     {
         // yHead -= step;
-        yHead += dy;
+        // yHead += dy;
     }
     if (down)
     {
         // yHead += step;
-        yHead += dy;
+        // yHead += dy;
     }
     if (left)
     {
         // xHead -= step;
-        xHead += dx;
+        // xHead += dx;
     }
     if (right)
     {
        // xHead += step;
-       xHead += dx;
+       // xHead += dx;
     }
 
     // Wrap around the canvas
@@ -203,11 +203,10 @@ function moveSquare()
     
     // tail testing!!!!!!!!! mishveleTTTt ))) arada martivia bliadd
     tail[point] = { x: xHead, y: yHead };
-    // console.log(`counter_bijebi = ${counter_bijebi}`)
     
     console.log(`/////////////////////`)
     for (let i = tail.length-1; i >= 0; i--){
-        // tail[i] = { x: tail[i - 1].x, y: tail[i - 1].y };
+        
         if (i !== 0) {
             console.log("aq var")
             // tail[i-1] = tail[i]
@@ -224,7 +223,6 @@ function moveSquare()
         // console.log(`/////////////////////`)
     }
     
-    counter_bijebi++
     drawCube()
     drawApple()
 }
@@ -243,3 +241,5 @@ function moveSquare()
 
 
 // რაღაც ვერ ვაკეთებ ვერაფერს ბლიაძძძ 
+
+// ოტ ი დო კარგად უნდა გავერკვე ყველაფერში 
